@@ -1,0 +1,45 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+
+\usepackage{style/layouts}  % Load your custom slide templates
+
+% Metadata
+\title{Demo: Custom Slide Layouts}
+\author{Owen Medeiros}
+\date{June 24, 2025}
+
+% Set logo path for examples
+\graphicspath{{figures/}}
+
+\begin{document}
+
+% Title + content layout
+\begin{SlideTitleContent}{Overview}
+  \begin{itemize}
+    \item Title + content
+    \item Minimal footer
+    \item Custom layouts via environments
+  \end{itemize}
+\end{SlideTitleContent}
+
+% Title only
+\begin{SlideTitleOnly}{Slide with Just a Title}
+  \begin{center}
+    \Large Additional content goes here (if needed)
+  \end{center}
+\end{SlideTitleOnly}
+
+% Transition slide
+\begin{SlideTitleCentered}{Section Break}
+\end{SlideTitleCentered}
+
+% Image-only slide
+\begin{SlideImageOnly}
+  \includegraphics[width=0.9\textwidth]{example_image.png}  % Replace with your image
+\end{SlideImageOnly}
+
+
+\end{document}
