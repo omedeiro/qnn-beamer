@@ -1,0 +1,119 @@
+
+\ProvidesPackage{style/layouts}
+\RequirePackage{tikz}
+\RequirePackage{xcolor}
+\RequirePackage{etoolbox}
+\RequirePackage{graphicx}
+
+% Example colors (adjust or import from your colors.sty)
+\definecolor{QNNRed}{RGB}{160, 30, 40}
+\definecolor{LightGray}{RGB}{245, 245, 245}
+\definecolor{DarkBG}{RGB}{30, 30, 30}
+\definecolor{DarkText}{RGB}{220, 220, 220}
+
+% Title + content layout
+\newenvironment{SlideTitleContent}[1]{%
+  \begin{frame}{#1}
+}{%
+  \end{frame}
+}
+
+% Just title at top, with footer
+\newenvironment{SlideTitleOnly}[1]{%
+  \begin{frame}
+    \frametitle{#1}
+}{%
+  \end{frame}
+}
+
+% Centered title (transition slide or section break) - no footer
+\newenvironment{SlideTitleCentered}[1]{%
+  \begin{frame}[plain]
+    \setbeamertemplate{footline}{}%
+    \vspace*{3cm}
+    \centering
+    {\Huge\bfseries #1}
+}{%
+  \end{frame}
+}
+
+% Image-dominant layout, no title
+\newenvironment{SlideImageOnly}{%
+  \begin{frame}[plain]
+  \setbeamertemplate{footline}{}%
+  \centering
+}{%
+  \end{frame}
+}
+
+% Split layout: half text, half figure (side-by-side)
+\newenvironment{SlideTextImage}[2]{%
+  \begin{frame}{#1}
+  \begin{columns}
+    \column{0.48\textwidth}
+    #2
+    \column{0.48\textwidth}
+}{%
+  \end{columns}
+  \end{frame}
+}
+
+% Dark mode variant for section slide (optional) - no footer
+\newenvironment{DarkTransitionSlide}[1]{%
+  \setbeamercolor{background canvas}{bg=DarkBG}
+  \setbeamercolor{normal text}{fg=DarkText}
+  \setbeamertemplate{footline}{}%
+  \begin{frame}[plain]
+    \centering
+    \vspace*{3cm}
+    {\Huge\bfseries #1}
+}{%
+  \end{frame}
+}
+
+
+% Disable default navigation symbols to avoid conflicts with custom footer
+\setbeamertemplate{navigation symbols}{}
+
+% Define footer background color
+\setbeamercolor{footline}{bg=LightGray,fg=black}
+
+\setbeamertemplate{footline}{
+  \leavevmode%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=3em,dp=1ex,leftskip=0.5cm,rightskip=0.5cm]{footline}
+    \begin{minipage}[b]{0.2\textwidth}
+      \centering
+      \includegraphics[height=3em]{figures/qnn_logo.png}
+    \end{minipage}%
+    \begin{minipage}[b]{0.6\textwidth}
+      \centering
+      \usebeamerfont{footline}\insertauthor, \insertdate
+    \end{minipage}%
+    \begin{minipage}[b]{0.2\textwidth}
+      \raggedleft
+      \usebeamerfont{footline}\insertframenumber
+    \end{minipage}
+  \end{beamercolorbox}%
+  \vskip0pt%
+}
+
+% Custom footer with specific text
+\newcommand{\setfootertext}[1]{%
+  \setbeamertemplate{footline}{
+    \leavevmode%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=3em,dp=1ex,leftskip=0.5cm,rightskip=0.5cm]{footline}
+      \begin{minipage}[b]{0.2\textwidth}
+        \centering
+        \includegraphics[height=3em]{figures/qnn_logo.png}
+      \end{minipage}%
+      \begin{minipage}[b]{0.6\textwidth}
+        \centering
+        \usebeamerfont{footline}#1
+      \end{minipage}%
+      \begin{minipage}[b]{0.2\textwidth}
+        \raggedleft
+        \usebeamerfont{footline}\insertframenumber
+      \end{minipage}
+    \end{beamercolorbox}
+  }
+}
