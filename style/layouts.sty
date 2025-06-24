@@ -4,6 +4,55 @@
 \RequirePackage{etoolbox}
 \RequirePackage{graphicx}
 \RequirePackage[absolute,overlay]{textpos}  % ← This is the fix
+\RequirePackage{fontspec}  % For loading custom fonts
+
+% Load HelveticaNeue font family with proper weight mapping
+\setmainfont{HelveticaNeueRoman}[
+  Path = fonts/,
+  UprightFont = HelveticaNeueRoman.otf,
+  BoldFont = HelveticaNeueBold.otf,
+  ItalicFont = HelveticaNeueItalic.ttf,
+  BoldItalicFont = HelveticaNeueBoldItalic.otf
+]
+
+\setsansfont{HelveticaNeueRoman}[
+  Path = fonts/,
+  UprightFont = HelveticaNeueRoman.otf,
+  BoldFont = HelveticaNeueBold.otf,
+  ItalicFont = HelveticaNeueItalic.ttf,
+  BoldItalicFont = HelveticaNeueBoldItalic.otf
+]
+
+% Define additional font families for different weights
+\newfontfamily\HelveticaLight{HelveticaNeueLight}[
+  Path = fonts/,
+  Extension = .otf,
+  UprightFont = HelveticaNeueLight,
+  ItalicFont = HelveticaNeueLightItalic
+]
+
+\newfontfamily\HelveticaMedium{HelveticaNeueMedium}[
+  Path = fonts/,
+  Extension = .otf,
+  UprightFont = HelveticaNeueMedium,
+  ItalicFont = HelveticaNeueMediumItalic
+]
+
+\newfontfamily\HelveticaHeavy{HelveticaNeueHeavy}[
+  Path = fonts/,
+  Extension = .otf,
+  UprightFont = HelveticaNeueHeavy,
+  ItalicFont = HelveticaNeueHeavyItalic
+]
+
+% Set beamer fonts to use appropriate weights
+\usefonttheme{professionalfonts}
+\setbeamerfont{title}{family=\HelveticaHeavy,size=\Huge}
+\setbeamerfont{subtitle}{family=\HelveticaMedium,size=\Large}
+\setbeamerfont{frametitle}{family=\HelveticaMedium,size=\large}
+\setbeamerfont{framesubtitle}{family=\sffamily,series=\mdseries,size=\normalsize}
+\setbeamerfont{normal text}{family=\sffamily,series=\mdseries,size=\normalsize}
+\setbeamerfont{footline}{family=\sffamily,series=\mdseries,size=\small}
 
 % Example colors (adjust or import from your colors.sty)
 \definecolor{QNNRed}{RGB}{160, 30, 40}
