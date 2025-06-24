@@ -1,0 +1,43 @@
+# LaTeX build output directory
+out/
+
+# LaTeX auxiliary files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.run.xml
+*.synctex.gz
+*.synctex(busy)
+
+# LaTeX temporary files
+*.tmp
+*.backup
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# PDF files (uncomment if you don't want to track PDFs)
+# *.pdf
