@@ -53,10 +53,21 @@
 \usefonttheme{professionalfonts}
 \setbeamerfont{title}{family=\HelveticaHeavy,size=\Huge}
 \setbeamerfont{subtitle}{family=\HelveticaMedium,size=\Large}
-\setbeamerfont{frametitle}{family=\HelveticaMedium,size=\large}
+\setbeamerfont{frametitle}{family=\HelveticaMedium,size=\Large}
 \setbeamerfont{framesubtitle}{family=\sffamily,series=\mdseries,size=\normalsize}
 \setbeamerfont{normal text}{family=\sffamily,series=\mdseries,size=\normalsize}
 \setbeamerfont{footline}{family=\sffamily,series=\mdseries,size=\small}
+
+% Set frame title color to black
+\setbeamercolor{frametitle}{fg=black}
+
+% Set bullet points to filled black circles
+\setbeamertemplate{itemize item}{\textbullet}
+\setbeamertemplate{itemize subitem}{\textbullet}
+\setbeamertemplate{itemize subsubitem}{\textbullet}
+\setbeamercolor{itemize item}{fg=black}
+\setbeamercolor{itemize subitem}{fg=black}
+\setbeamercolor{itemize subsubitem}{fg=black}
 
 % Example colors (adjust or import from your colors.sty)
 \definecolor{QNNRed}{RGB}{160, 30, 40}
