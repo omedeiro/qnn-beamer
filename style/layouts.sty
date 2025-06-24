@@ -112,19 +112,6 @@
   \end{frame}
 }
 
-% Dark mode variant for section slide (optional) - no footer
-\newenvironment{DarkTransitionSlide}[1]{%
-  \setbeamercolor{background canvas}{bg=DarkBG}
-  \setbeamercolor{normal text}{fg=DarkText}
-  \setbeamertemplate{footline}{}%
-  \begin{frame}[plain]
-    \centering
-    \vspace*{3cm}
-    {\Huge\bfseries #1}
-}{%
-  \end{frame}
-}
-
 
 % Define footer background color
 \setbeamercolor{footline}{bg=LightGray,fg=black}
