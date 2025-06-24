@@ -1,9 +1,9 @@
-
 \ProvidesPackage{style/layouts}
 \RequirePackage{tikz}
 \RequirePackage{xcolor}
 \RequirePackage{etoolbox}
 \RequirePackage{graphicx}
+\RequirePackage[absolute,overlay]{textpos}  % ← This is the fix
 
 % Example colors (adjust or import from your colors.sty)
 \definecolor{QNNRed}{RGB}{160, 30, 40}
@@ -11,12 +11,66 @@
 \definecolor{DarkBG}{RGB}{30, 30, 30}
 \definecolor{DarkText}{RGB}{220, 220, 220}
 
+% Disable default navigation symbols to avoid conflicts with custom footer
+\setbeamertemplate{navigation symbols}{}
+
+\newenvironment{SlideTitleSlide}{%
+  \begin{frame}[plain]
+    \setbeamertemplate{footline}{}  % Disable footer
+    \usebackgroundtemplate{%
+      \includegraphics[width=\paperwidth,height=\paperheight]{figures/example_image.png}
+    }
+    \color{white}
+    \begin{textblock*}{\paperwidth}(1.5cm,2.5cm)  % Main title block
+      {\Huge\bfseries \inserttitle \\[0.5em]
+      \Large \insertshorttitle}
+    \end{textblock*}
+
+    \begin{textblock*}{\paperwidth}(1.5cm,5.8cm)  % Subtitle/date
+      {\color{QNNRed} \large \insertdate}
+    \end{textblock*}
+
+    \begin{textblock*}{\paperwidth}(1.5cm,7.0cm)  % Author/info block
+      {\color{white} \normalsize \insertauthor \\[0.2em]
+      \small Keithley Professor of Electrical Engineering, MIT}
+    \end{textblock*}
+
+    % Bottom white bar with logos
+    \begin{textblock*}{\paperwidth}(0cm,8.1cm)
+      \begin{tikzpicture}[overlay, remember picture]
+        \fill[white] (0,0) rectangle (\paperwidth, -1.5cm);
+      \end{tikzpicture}
+      \vspace{0.2cm}
+      \begin{minipage}{\paperwidth}
+        \hspace{0.5cm}%
+        \begin{minipage}[c]{0.3\textwidth}
+          \centering
+          \includegraphics[height=2em]{figures/qnn_logo.png}
+        \end{minipage}%
+        \hfill
+        \begin{minipage}[c]{0.3\textwidth}
+          \centering
+          \includegraphics[height=2em]{figures/rle_logo.png}
+        \end{minipage}%
+        \hfill
+        \begin{minipage}[c]{0.3\textwidth}
+          \centering
+          \includegraphics[height=2em]{figures/mit_logo.png}
+        \end{minipage}%
+        \hspace{0.5cm}%
+      \end{minipage}
+    \end{textblock*}
+}{%
+  \end{frame}
+}
+
 % Title + content layout
 \newenvironment{SlideTitleContent}[1]{%
   \begin{frame}{#1}
 }{%
   \end{frame}
 }
+
 
 % Just title at top, with footer
 \newenvironment{SlideTitleOnly}[1]{%
@@ -71,9 +125,6 @@
   \end{frame}
 }
 
-
-% Disable default navigation symbols to avoid conflicts with custom footer
-\setbeamertemplate{navigation symbols}{}
 
 % Define footer background color
 \setbeamercolor{footline}{bg=LightGray,fg=black}
